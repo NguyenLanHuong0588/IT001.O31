@@ -2,6 +2,8 @@
 using namespace std;
 
 void NhapMang (int a[], int n) {
+    cout << "Nhap so phan tu trong mang: ";
+    cin >> n;
     cout << "Nhap mang: ";
     for (int i = 0; i < n; i++)
         cin >> a[i];
@@ -198,8 +200,6 @@ void ReqSort (int a[], int n) {
 int main() {
     int a[1000], n;
     cout << "\nNhap, Xuat mang:\n";
-    cout << "Nhap so phan tu trong mang: ";
-    cin >> n;
     NhapMang(a, n);
     XuatMang(a, n);
 
