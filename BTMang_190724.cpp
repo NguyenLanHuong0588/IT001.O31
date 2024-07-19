@@ -3,13 +3,10 @@
 using namespace std;
 
 void NhapMang (int a[], int n) {
-    do {
-        cin >> n;
-    } while (n <= 0);
     for (int i = 0; i < n; i++) {
         do {
             cin >> a[i];
-        } while (a[i] < 0);
+        } while (a[i] <= 0);
     }
 }
 
@@ -33,10 +30,10 @@ bool IsPrime (int n) {
 //     return max;
 // }
 
-void FindLastHighestPrime (int a[], int n) {
+void FindLastHighestPrime(int a[], int n) {
     int max_value = -1, max_index = -1;
     for (int i = 0; i < n; ++i) {
-        if (IsPrime(a[i]) && a[i] >= max_value) {
+        if (IsPrime(a[i]) && a[i] >= max_value) { 
             max_value = a[i];
             max_index = i;        
         }
@@ -45,12 +42,16 @@ void FindLastHighestPrime (int a[], int n) {
         cout << "max = " << max_value << endl;
         cout << "index = " << max_index << endl;
     }
-    else 
+    else {
         cout << "Khong co so nguyen to trong mang" << endl;
+    }
 }
 
 int main () {
     int a[100], n;
+    do {
+        cin >> n;
+    } while (n <= 0);
     NhapMang(a, n);
 
     // int max_index, max_value = FindHighestPrime(a, n);

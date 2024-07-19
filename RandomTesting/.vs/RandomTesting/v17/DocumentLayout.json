@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Study @@\\it001\\IT001.O31\\IT001.O31\\RandomTesting\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1895FB24-5DE3-42DC-8903-50FA6A7B3CBF}|RandomTesting\\RandomTesting.vcxproj|D:\\Study @@\\it001\\IT001.O31\\IT001.O31\\RandomTesting\\RandomTesting\\FileName.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1895FB24-5DE3-42DC-8903-50FA6A7B3CBF}|RandomTesting\\RandomTesting.vcxproj|solutionrelative:RandomTesting\\FileName.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileName.cpp",
+              "DocumentMoniker": "D:\\Study @@\\it001\\IT001.O31\\IT001.O31\\RandomTesting\\RandomTesting\\FileName.cpp",
+              "RelativeDocumentMoniker": "RandomTesting\\FileName.cpp",
+              "ToolTip": "D:\\Study @@\\it001\\IT001.O31\\IT001.O31\\RandomTesting\\RandomTesting\\FileName.cpp",
+              "RelativeToolTip": "RandomTesting\\FileName.cpp",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAADUAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-19T04:16:46.348Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
