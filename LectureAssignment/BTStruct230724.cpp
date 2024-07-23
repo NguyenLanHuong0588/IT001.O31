@@ -34,7 +34,7 @@ void rutGonPhanSo(PHANSO &ps) {
     ps.mau /= ucln;
 }
 
-PHANSO tinhTongPhanSo(PhanSo a[], int n) {
+PHANSO tinhTongPhanSo(PHANSO a[], int n) {
     PHANSO kq = {0, 1}; // Khởi tạo tổng ban đầu là 0/1
     for (int i = 0; i < n; i++) {
         kq.tu = kq.tu * a[i].mau + a[i].tu * kq.mau;
@@ -57,11 +57,11 @@ int main() {
     cout << "Nhap so luong phan so: ";
     cin >> n;
 
-    PhanSo a[100]; 
+    PHANSO a[100]; 
 
     NhapMang(a, n);
 
-    PhanSo tong = tinhTongPhanSo(a, n);
+    PHANSO tong = tinhTongPhanSo(a, n);
 
     cout << "Tong cua mang phan so la: " << tong.tu << "/" << tong.mau << endl;
 
