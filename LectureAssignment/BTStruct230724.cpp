@@ -4,17 +4,17 @@
 using namespace std; 
 // Định nghĩa cấu trúc phân số
 struct PhanSo {
-    int tuSo;
-    int mauSo;
+    int tu;
+    int mau;
 };
 typedef PhanSo PHANSO;
 
 PHANSO nhapPhanSo() {
     PHANSO ps;
     cout << "Nhap tu so: ";
-    cin >> ps.tuSo;
+    cin >> ps.tu;
     cout << "Nhap mau so: ";
-    cin >> ps.mauSo;
+    cin >> ps.mau;
     return ps;
 }
 
@@ -29,16 +29,16 @@ int UCLN(int a, int b) {
 }
 
 void rutGonPhanSo(PHANSO &ps) {
-    int ucln = UCLN(ps.tuSo, ps.mauSo);
-    ps.tuSo /= ucln;
-    ps.mauSo /= ucln;
+    int ucln = UCLN(ps.tu, ps.mau);
+    ps.tu /= ucln;
+    ps.mau /= ucln;
 }
 
 PHANSO tinhTongPhanSo(PhanSo a[], int n) {
     PHANSO kq = {0, 1}; // Khởi tạo tổng ban đầu là 0/1
     for (int i = 0; i < n; i++) {
-        kq.tuSo = kq.tuSo * a[i].mauSo + a[i].tuSo * kq.mauSo;
-        kq.mauSo *= a[i].mauSo;
+        kq.tu = kq.tu * a[i].mau + a[i].tu * kq.mau;
+        kq.mau *= a[i].mau;
     }
     rutGonPhanSo(kq);
     return kq;
@@ -63,7 +63,7 @@ int main() {
 
     PhanSo tong = tinhTongPhanSo(a, n);
 
-    cout << "Tong cua mang phan so la: " << tong.tuSo << "/" << tong.mauSo << std::endl;
+    cout << "Tong cua mang phan so la: " << tong.tu << "/" << tong.mau << endl;
 
     return 0;
 }
