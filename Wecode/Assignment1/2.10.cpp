@@ -5,12 +5,12 @@ bool IsLeapYear (int nm) {
     return (nm % 4 == 0 && nm % 100 != 0) || (nm % 400 == 0);
 }
 
-bool ValidMonth(int th) {
-    return th >= 1 && th <= 12;
-}
-
 bool ValidYear (int nm) {
     return nm > 0;
+}
+
+bool ValidMonth(int th) {
+    return th >= 1 && th <= 12;
 }
 
 bool ValidDate (int ng, int th, int nm) {
@@ -23,9 +23,9 @@ bool ValidDate (int ng, int th, int nm) {
 int main () {
     int ng, th, nm;
     cin >> ng >> th >> nm;
-    if (!ValidMonth(th)) cout << "Thang khong hop le.";
-    else if (!ValidYear(nm)) cout << "Nam khong hop le.";
-    else if (!ValidDate(ng, th, nm)) cout << "Ngay khong hop le." << endl;
+    if (!ValidYear(nm)) cout << "Nam khong hop le.";
+    else if (!ValidMonth(th)) cout << "Thang khong hop le.";
+    else if (!ValidDate(ng, th, nm)) cout << ng << "/" << th << "/" << nm << " la ngay khong hop le." << endl;
     else cout << ng << "/" << th << "/" << nm << " la ngay hop le." << endl;
     return 0;
 }
