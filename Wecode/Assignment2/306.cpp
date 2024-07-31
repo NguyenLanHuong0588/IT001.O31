@@ -2,16 +2,23 @@
 #include <cmath>
 using namespace std;
 
-int main() {
-    int s, n;
-    cin >> s;
-    do {
-        cin >> n;
-        if (n % 10 != 0) continue;
-        s += n;
-    } while (s < 110);
-    cout << s;
-    return 0; 
+float factorial(float n) {
+    if (n == 0 || n == 1) return 1; 
+    else return n * factorial(n - 1);
 }
 
-// 21 55 42 30 9 10 15 -10 50 7 -30 50 8 20
+int main() {
+    unsigned long n, x;
+    cin >> n >> x;
+    float s1 = 1;
+    float s2 = 1;
+    float s3 = 1;
+    
+    for (int i = 1; i <= n; i++) {
+        s1 += pow(x, i);
+        s2 += pow(x, 2 * i);
+        s3 += pow(x, i) / factorial(i);
+    }
+    cout << s1 << endl << s2 << endl << s3;
+    return 0;
+}
