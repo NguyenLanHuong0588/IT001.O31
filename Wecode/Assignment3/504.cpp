@@ -1,41 +1,38 @@
 #include <iostream>
 using namespace std;
 
-
 bool IsPrime(int n) {
-    if (n < 2) return false;
-    if (n == 2) return true;
-    for (int i = 3; i * i <= n; ++i) {
-        if (n % i == 0) return false;
+    if (n <= 1) return false;
+    if (n <= 3) return true;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) return false;
     }
     return true;
 }
 
-int reverse(int n) {
-    int reversed = 0;
+int reverse (int n) {
+    int r = 0;
     while (n > 0) {
-        reversed = reversed * 10 + n % 10;
+        r = r * 10 + (n % 10);
         n /= 10;
     }
-    return reversed;
+    return r;
 }
 
-int count_reversible_primes(int a, int b) {
-    int count = 0;
-    for (int i = a; i <= b; i++) {
-        if (IsPrime(i)) {
-            int reversed = reverse(i);
-            if (i != reversed && IsPrime(reversed)) {
-                count++;
-            }
+int CountPrimePalindrome(int a, int b) {
+    int dem = 0;
+    for (int i = a; i <= b; ++i) {
+        if (IsPrime(i) && IsPrime(reverse(i))) {
+            dem++;
         }
     }
-    return count;
+    return dem;
 }
 
 int main() {
     int a, b;
     cin >> a >> b;
-    cout << count_reversible_primes(a, b) << endl;
+    cout << CountPrimePalindrome(a, b) << endl;
     return 0;
 }
