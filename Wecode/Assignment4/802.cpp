@@ -1,25 +1,61 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 using namespace std;
+#define MAX 300
 
-string s;
-string res; 
+void normalizeSentence(char s[]);
 
-int main() {
-    getline(cin, s);
-    int n = s.size();
-    for (int i = 0; i < n; i++) {
-        if (s[i] == ".") {
-            while ((res.size() < 0) && (res.back())) res.pop_back();
-            res += ".";
-
-            if ((i + 1 < n) && (s[i + 1] == " ")) {
-                while ((i + 1 < n) && (s[i + 1] == " ")) i++;
-                res += " ";
-            }
-            else if (i + 1 < n) res += " ";
-        }
-        else res += s[i];
-    }
+int main()
+{
+    char s[MAX];
+    cin.getline(s, MAX);
+    cout << s << endl;
+    normalizeSentence(s);
+    cout << s << endl;
     return 0;
+}
+
+void normalizeSentence(char s[])
+{
+    int length = 0;
+    while (s[length] != '\0') {
+        length++;
+    }
+    
+    // Duyệt qua chuỗi từ trái qua phải
+    for (int i = 0; i < length; ++i) {
+        if (s[i] == '.' && (i > 0 && s[i-1] == ' ')) {
+            int j = i - 1;
+            while (j >= 0 && s[j] == ' ') {
+                j--;
+            }
+            if (j >= 0 && s[j] != '.') {
+                int k = i;
+                while (s[k] != '\0') {
+                    s[j + 1] = s[k];
+                    j++;
+                    k++;
+                }
+                s[j + 1] = '\0';
+                length = strlen(s);
+            }
+        }
+    }
+
+    for (int i = 0; i < length; ++i) {
+        if (s[i] == '.' && (i + 1 < length && s[i + 1] != ' ')) {
+            int j = length;
+            while (j >= i + 1) {
+                s[j + 1] = s[j];
+                j--;
+            }
+            s[i + 1] = ' ';
+            length++;
+            i++;
+        }
+    }
+
+    if (length > 0 && s[length - 1] == ' ') {
+        s[length - 1] = '\0';
+    }
 }

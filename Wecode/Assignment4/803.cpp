@@ -1,36 +1,34 @@
 #include <iostream>
-#include <string>
-
+#include<string.h>
 using namespace std;
 
-string ChuanHoaCau(string s) {
-    s.erase(0, s.find_first_not_of(" "));
-    s.erase(s.find_last_not_of(" ") + 1);
-
-    bool IsFirstLetter = true;
-    for (char& c : s) {
-        if (isspace(c)) IsFirstLetter = true;
+int main()
+{
+    string S;
+    int i;
+    getline(cin, S);
+    
+    i = 0;
+    while (i < S.size() - 1) {
+        if (S[i] == ' ' && S[i + 1] == ' ') S.erase(i, 1);
+        else i = i + 1;
+    }
+    if (S[0] == ' ') S.erase(0, 1);
+    if (S[S.size() - 1] == ' ') S.erase(S.size() - 1, 1);
+ 
+    S = " " + S + " ";
+    for (i = 0; i < S.size() - 1; i++) {
+        if (S[i] == ' ') {
+            S[i + 1] = toupper(S[i + 1]);
+            if (i == 0) cout << S[i + 1];
+            else cout << " " << S[i + 1];
+            i = i + 1;
+        }
         else {
-            if (IsFirstLetter) {
-                if (c >= 'a' && c <= 'z') c = c - 'a' + 'A';
-                IsFirstLetter = false;
-            } else {
-                
-                if (c >= 'A' && c <= 'Z') c = c - 'A' + 'a';
-            }
+            S[i] = tolower(S[i]);
+            cout << S[i];
         }
     }
-
-    return s;
-}
-
-int main() {
-    string s;
-    cout << "Nhap chuoi: ";
-    getline(cin, s);
-
-    string kq = ChuanHoaCau(s);
-    cout << kq << endl;
-
+    
     return 0;
 }

@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string.h>
 using namespace std;
@@ -11,47 +10,72 @@ void mySubstr(char s[], int b, int count, char ss[]);
 bool myStrcat(char s1[], char s2[]);
 void StringReverse(char st[]);
 
-int main()
-{
-	char s[MAX];
-	cin.getline(s,MAX);
-	if (myStrcmp(s, "") == 0)
-		cout << "Chuoi rong." << endl;
-	else
-	{
-		StringReverse(s);
-		cout << s << endl;
-	}
-	return 0;
+int myStrcmp(char s1[], char s2[]) {
+    int i = 0;
+    while (s1[i] != '\0' && s2[i] != '\0') {
+        if (s1[i] != s2[i]) return s1[i] - s2[i];
+        i++;
+    }
+    return s1[i] - s2[i];
 }
 
 int myStrlen(char s[], int k) {
-    int l = k;
-    while (s[l] != '\0') l++;
-    return l;
+    int length = 0;
+    while (s[k + length] != '\0') {
+        length++;
+    }
+    return length;
 }
 
-void subStringReverse (char st[], int u, int v) {
-    int L = u, R = v;
-    while (L < R) {
-        char temp = st[L];
-        st[L] = st[R];
-        st[R] = temp;
-
-        L++;
-        R++; 
+void myStrcpy(char s[], int vt, char s1[], int k) {
+    for (int i = 0; i < k; ++i) {
+        s1[i] = s[vt + i];
     }
+    s1[k] = '\0';
+}
+
+void mySubstr(char s[], int b, int count, char ss[]) {
+    for (int i = 0; i < count; ++i) {
+        ss[i] = s[b + i];
+    }
+    ss[count] = '\0';
+}
+
+bool myStrcat(char s1[], char s2[]) {
+    int i = 0;
+    while (s1[i] != '\0') i++;
+    int j = 0;
+    while (s2[j] != '\0') {
+        s1[i] = s2[j];
+        i++;
+        j++;
+    }
+    s1[i] = '\0';
+    return true;
 }
 
 void StringReverse(char st[]) {
-    int n = myStrlen(st, 0);
-    for (int i = 0; i < n; i++) {
-        if (st[i] == " ") i++;
-        else {
-            int j = i;
-            while ((j < n) && (st[j] != " ")) j++;
-            subStringReverse (st, i, j - 1);
-            i = j;
+    int len = myStrlen(st, 0);
+    char temp[MAX];
+    int j = 0;
+    char result[MAX] = "";
+
+    for (int i = 0; i <= len; ++i) {
+        if (st[i] == ' ' || st[i] == '\0') {
+            temp[j] = '\0';
+            for (int k = 0; k < j / 2; ++k) {
+                char t = temp[k];
+                temp[k] = temp[j - k - 1];
+                temp[j - k - 1] = t;
+            }
+            myStrcat(result, temp);
+            if (st[i] == ' ') {
+                myStrcat(result, (char *)" ");
+            }
+            j = 0;
+        } else {
+            temp[j++] = st[i];
         }
     }
+    myStrcpy(result, 0, st, myStrlen(result, 0));
 }
